@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Orders</title>
+	<link href="{{ url_for('static', filename='normalize.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+
+</head>
+<body>
+	<div>
+    <nav class="topnav">
+    <ul>
+      <li><a href='/'>Home</a></li>
+      <li><a href='/cakes'>Cakes</a></li>
+      <li><a href='/contact'>Contact</a></li>
+      <li><a href='/orders'>Orders</a></li>
+      <li><a href='/login'>Login</a></li>
+      <li><a href='/cart' id="cart_topmenu" class='active'>Cart <span id="in_cart">(0)</span></a></li>
+    </ul>
+    </nav>
+  	</div>
+  	<div class="orders_table">
+	<table>
+    <thead>
+      <tr>
+          <th>Name</th>
+          <th>Number</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+    </thead>
+       <tbody>
+        <tr>
+          <td></td>
+          <td><input type="number" name="quantity" min="1" max="10" value="1"></td>
+          <td></td>
+          <td></td>
+        </tr>
+        </tbody> 
+        <tfoot>
+         <tr>
+
+          <td colspan="4"><button type="submit" name="update" value="Send" class="updatebtn">Update cart</button></td>
+        </tr>
+        </tfoot>
+
+	</table>
+</div>
+<button type="submit" name="send" value="Send" class="sendbtn">Send order</button>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cakes</title>
+	<link href="{{ url_for('static', filename='normalize.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+	<div>
+    <nav class="topnav">
+    <ul>
+      <li><a href='/' class='active'>Home</a></li>
+      <li><a href='/cakes'>Cakes</a></li>
+      <li><a href='/contact'>Contact</a></li>
+      <li><a href='/orders'>Orders</a></li>
+      <li><a href='/login'>Login</a></li>
+	  <li><a href='/cart' id="cart_topmenu">Cart <span id="in_cart">(0)</span></a></li>
+    </ul>
+    </nav>
+  	</div>
+    <div id="main_page_menu">
+        <div class='main_menu_row'>
+            <div><a href="#cakes_header" class="main_menu_item">Cakes</a></div>
+            <div><a href="#cookies_header" class="main_menu_item">Cookies</a></div>
+            <div><a href="#pies_header" class="main_menu_item">Pies</a></div>
+        </div>
+    </div>
+    <br>
+<div class="item_block">
+    <h1 id="cakes_header">Cakes</h1>
+    <div class="item_row">
+    {% for item in items %}
+    {% if item.category == 'cakes' %}
+    	<div class="item_card">
+    		<div class="card_container">
+    			<div class="card_img">
+        	<img src="{{ item.img_path }}" alt=""></div>
+        	<div class="item_card_info">
+        	<h4>{{ item.name }}</h4>
+       		<h5>Price: {{ item.price }}</h5>
+        	<p>{{ item.text }}</p>
+        	<form><input type="number" name="quantity" min="1" max="10" value="1">
+        	<button onclick=result_plus()>Add to cart</button></br></form>
+    		</div>
+    		</div>
+    	</div>
+    {% endif %}
+    {% endfor %}
+	</div>
+</div>
+
+<div class="item_block">
+    <h1 id="cookies_header">Cookies</h1>
+    <div class="item_row">
+    {% for item in items %}
+    {% if item.category == 'cookies' %}
+    	<div class="item_card">
+    		<div class="card_container">
+    			<div class="card_img">
+        	<img src="{{ item.img_path }}" alt=""> </div>
+        	<div class="item_card_info">
+        	<h4>{{ item.name }}</h4>
+       		<h5>Price: {{ item.price }}</h5>
+        	<p>{{ item.text }}</p>
+        	<form><input type="number" name="quantity" min="1" max="10" value="1">
+        	<button id onclick=result_plus()>Add to cart</button></br></form>
+        	</div>
+    		</div>
+    	</div>
+    {% endif %}
+    {% endfor %}
+	</div>
+</div>
+<div class="item_block">
+    <h1 id="pies_header">Pies</h1>
+    <div class="item_row">
+    {% for item in items %}
+    {% if item.category == 'pies' %}
+    	<div class="item_card">
+    		<div class="card_container">
+    			<div class="card_img">
+        	<img src="{{ item.img_path }}" alt=""></div>
+        	<div class="item_card_info">
+        	<h4>{{ item.name }}</h4>
+       		<h5>Price: {{ item.price }}</h5>
+        	<p>{{ item.text }}</p>
+        	<form><input type="number" name="quantity" min="1" max="10" value="1">
+        	<button onclick=result_plus()>Add to cart</button></br></form>
+        	</div>
+    		</div>
+    	</div>
+    {% endif %}
+    {% endfor %}
+	</div>
+</div>
+</body>
+</html>

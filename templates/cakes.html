@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cakes</title>
+  <link href="{{ url_for('static', filename='normalize.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+
+</head>
+<body>
+  <div>
+    <nav class="topnav">
+    <ul>
+      <li><a href='/'>Home</a></li>
+      <li><a href='/cakes' class='active'>Cakes</a></li>
+      <li><a href='/contact'>Contact</a></li>
+      <li><a href='/orders'>Orders</a></li>
+      <li><a href='/login'>Login</a></li>
+      <li><a href='/cart' id="cart_topmenu">Cart <span id="in_cart">(0)</span></a></li>
+    </ul>
+    </nav>
+  </div>
+  <div class="search_block">
+  <div><button class="sort_btn">Sort by price</button></div>
+  <div><button class="sort_btn" id="btn_by_name">Sort by name</button></div>
+  </div>  
+    
+  
+
+<div class="item_block">
+    <div class="item_row">
+    {% for item in items %}
+      <div class="item_card">
+        <div class="card_container">
+          <div class="card_img">
+          <img src="{{ item.img_path }}" alt=""></div>
+          <div class="item_card_info" id="{{ item.id }}">
+          <h4 class="item_name">{{ item.name }}</h4>
+          <h5 class="item_price">Price: {{ item.price }}</h5>
+          <p>{{ item.text }}</p>
+          <form><input type="number" name="quantity" min="1" max="10" value="1">
+          <button onclick=result_plus()>Add to cart</button></br></form>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+</body>
+</html>

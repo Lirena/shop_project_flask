@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Orders</title>
+	<link href="{{ url_for('static', filename='normalize.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+
+</head>
+<body>
+	<div>
+    <nav class="topnav">
+    <ul>
+      <li><a href='/'>Home</a></li>
+      <li><a href='/cakes'>Cakes</a></li>
+      <li><a href='/contact'>Contact</a></li>
+      <li><a href='/orders' class='active'>Orders</a></li>
+      <li><a href='/login'>Login</a></li>
+      <li><a href='/cart' id="cart_topmenu">Cart <span id="in_cart">(0)</span></a></li>
+    </ul>
+    </nav>
+  	</div>
+  	<div class="auth_info"><p>You are logged in as <b>{{ session['user'] }}</b></p>
+  	<a href="/logout">Log out</a></div>
+  	<div class="orders_table">
+	<table>
+        <tr>
+          <th>Customer</th>
+          <th>Order id</th>
+          <th>Cake name</th>
+          <th>Number</th>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+    
+      {% for item in items %}
+        <tr>
+          <td>{{ item.user_id }}</td>
+          <td>{{ item.id }}</td>
+          <td>{{ item.item_id }}</td>
+          <td>{{ item.number_of_items }}</td>
+          <td>{{ item.date }}</td>
+          <td>{{ item.status }}</td>
+        </tr>
+      {% endfor %}
+   
+	</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+    <link href="{{ url_for('static', filename='normalize.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+
+</head>
+<body>
+    <div>
+    <nav class="topnav">
+    <ul>
+      <li><a href='/'>Home</a></li>
+      <li><a href='/cakes'>Cakes</a></li>
+      <li><a href='/contact'>Contact</a></li>
+      <li><a href='/orders'>Orders</a></li>
+      <li><a href='/login' class='active'>Login</a></li>
+      <li><a href='/cart' id="cart_topmenu">Cart <span id="in_cart">(0)</span></a></li>
+    </ul>
+    </nav>
+    </div>
+<form action="/login" method="POST">
+        {% if session['logged_in'] %}
+        <p>You're logged in already!</p>
+        {% else %}
+    <div class="container">
+    <p>Please, enter your login and password to sign in.</p>
+    <hr>
+
+    <label for="login"><b>Login:</b></label><br>
+    <input type="text" placeholder="Enter login" name="input_login" required>
+<br>
+    <label for="psw"><b>Password:</b></label><br>
+    <input type="password" placeholder="Enter Password" name="input_password" required>
+
+    <hr>
+   <button type="submit" name="send" value="Send" class="loginbtn">Sign in</button>
+  </div>
+  {% endif %}
+</form>
+
+</body>
+</html>
